@@ -56,14 +56,17 @@ def keyword_generation(prompt: List[str]):
 
     # Remove white spaaces
     keyword_array = [k.strip() for k in keyword_array]
-    
+
     # Get rid of null values
     keyword_array = [k for k in keyword_array if len(k) > 0]
     return keyword_array
 
-def main():
-    print("Running process")
 
+def validate_request_length(prompt: str) -> bool:
+    return len(prompt) <= 24
+
+
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--input", 
@@ -75,11 +78,15 @@ def main():
     user_input = args.input
 
     print(f"User input: {user_input}")
-    content_result = content_generation(user_input)
-    keywords_result = keyword_generation(user_input)
-    
-    print(content_result)
-    print(keywords_result)
+
+    if validate_request_length(user_input):
+        content_result = content_generation(user_input)
+        keywords_result = keyword_generation(user_input)
+        
+        print(content_result)
+        print(keywords_result)
+    else:
+        raise ValueError(f"Your prompt is too long! Please keep it under 24 characters. Your input was {len(user_input) - 24} characters too long.")
 
 
 if __name__ == "__main__":
