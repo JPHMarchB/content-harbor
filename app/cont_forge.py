@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import os
 from openai import OpenAI
 import argparse
-import regex
+import re
 load_dotenv()
 
 
@@ -14,7 +14,7 @@ def content_generation(prompt: str):
     completion = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
-        {"role": "user", "content": f"Generate a topic for a social media post based on current events relating to {prompt}"}], 
+        {"role": "user", "content": f"Generate a topic for a social media post based on current events relating to {prompt}, no hashtags"}], 
     max_tokens=32, 
     temperature=0.6
     )
@@ -29,14 +29,14 @@ def content_generation(prompt: str):
     last_char = response[-1]
 
     # If not add elipses to the end of the response
-    if last_char not in {".", "!", "?", '"'}:
+    if last_char not in {".", "!", "?"}:
         response += "..."
 
     # Return the final response
+    print(response)
     return response
 
-
-def keyword_generation(prompt: List[str]):
+def keyword_generation(prompt: str) -> List[str]:
     api_key=os.environ.get("OPENAI_API_KEY")
     client = OpenAI(api_key=api_key)
 
@@ -51,15 +51,13 @@ def keyword_generation(prompt: List[str]):
     response: str = completion.choices[0].message.content
     response = response.strip()
 
-    # Take keywords, turn them into array
-    keyword_array = regex.split(",|\n|.|-", response)
+    response = response.strip()
+    keywords_array = re.split(",|\n|;|-", response)
+    keywords_array = [k.lower().strip() for k in keywords_array]
+    keywords_array = [k for k in keywords_array if len(k) > 1]
 
-    # Remove white spaaces
-    keyword_array = [k.strip() for k in keyword_array]
-
-    # Get rid of null values
-    keyword_array = [k for k in keyword_array if len(k) > 0]
-    return keyword_array
+    print(keywords_array)
+    return keywords_array
 
 
 def validate_request_length(prompt: str) -> bool:
@@ -80,11 +78,8 @@ def main():
     print(f"User input: {user_input}")
 
     if validate_request_length(user_input):
-        content_result = content_generation(user_input)
-        keywords_result = keyword_generation(user_input)
-        
-        print(content_result)
-        print(keywords_result)
+        content_generation(user_input)
+        keyword_generation(user_input)
     else:
         raise ValueError(f"Your prompt is too long! Please keep it under 24 characters. Your input was {len(user_input) - 24} characters too long.")
 

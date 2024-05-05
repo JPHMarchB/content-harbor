@@ -7,23 +7,20 @@ app = FastAPI()
 async def content_generation_api(prompt: str):
     request_validation(prompt)
     snippet = content_generation(prompt)
-    return {"Snippet": snippet}
+    return {"Snippet": snippet, "keywords": []}
 
 @app.get("/generate_keywords")
 async def keyword_generation_api(prompt: str):
     request_validation(prompt)
     keywords = keyword_generation(prompt)
-    return {"keywords": keywords}
+    return {"snippet": None, "keywords": keywords}
 
 @app.get("/post_idea")
 async def post_generation_api(prompt: str):
     request_validation(prompt)
     concept = content_generation(prompt) 
     keywords = keyword_generation(prompt)
-    return {
-        "Post Concept": concept, 
-        "Post Keywords": keywords
-        }
+    return {"Post Concept": concept, "Post Keywords": keywords}
 
 def request_validation(prompt: str):
     if len(prompt) > 24:
