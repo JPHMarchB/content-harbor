@@ -1,7 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from cont_forge import content_generation, keyword_generation
+from mangum import Mangum
 
 app = FastAPI()
+handler = Mangum(app)
 
 @app.get("/generate_content")
 async def content_generation_api(prompt: str):
