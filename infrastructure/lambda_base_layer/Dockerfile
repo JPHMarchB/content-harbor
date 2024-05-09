@@ -1,15 +1,15 @@
 FROM amazonlinux:latest
 
 # Install Python
-RUN dnf install -y python3 && \
-    dnf install -y python3-pip && \
+RUN dnf install -y python3.11 && \
+    dnf install -y python3.11-pip && \
     dnf install -y zip && \
     dnf clean all
 
 # Set up PIP and Venv
-RUN python3 -m pip install --ignore-installed --upgrade pip && \
-    python3 -m pip install virtualenv
-RUN python3 -m venv base
+RUN python3.11 -m pip install --upgrade pip && \
+    python3.11 -m pip install virtualenv
+RUN python3.11 -m venv base
 RUN source base/bin/activate
 
 # Install dependencies
