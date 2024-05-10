@@ -29,8 +29,8 @@ def content_generation(prompt: str):
     last_char = response[-1]
 
     # If not add elipses to the end of the response
-    if last_char not in {".", "!", "?"}:
-        response += "..."
+    if last_char not in {".", "!", "?",'"'}:
+        response += '..."'
 
     # Return the final response
     print(response)
@@ -43,7 +43,7 @@ def keyword_generation(prompt: str) -> List[str]:
     completion = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
-        {"role": "user", "content": f"Generate keywords relating to {prompt}"}], 
+        {"role": "user", "content": f"Generate keywords relating to {prompt}, do not number them"}], 
     max_tokens=32, 
     temperature=0.6
     )

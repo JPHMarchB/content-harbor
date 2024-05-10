@@ -31,3 +31,18 @@ body {
     text-wrap: balance;
   }
 }
+
+@layer base {
+  @keyframes highlight {
+    from {
+        color: rgb(180, 241, 255);
+    }
+    to {
+        color: white;
+    }
+}
+
+.animation-highlight {
+    animation: highlight 4s infinite alternate;
+}
+}
