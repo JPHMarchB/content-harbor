@@ -72,7 +72,7 @@ const ContHarb: React.FC = () => {
             <h1 className={gradientTextStyle + " text-3xl font-light"}>
               Content Harbor
             </h1>
-            <div className={gradientTextStyle}>Your AI branding assistant</div>
+            <div className={gradientTextStyle}>Your AI Social Media assistant</div>
           </div>
 
           {displayedElement}
