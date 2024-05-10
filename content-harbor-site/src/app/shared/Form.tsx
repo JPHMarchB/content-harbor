@@ -25,7 +25,7 @@ type FormProps = {
       <>
         <div className="mb-6 text-slate-400">
           <p>
-            Tell me what you want to post about and I will generate content and keywords for you.
+            Tell me what you would like to post about and I will generate content ideas and hashtags for you.
           </p>
         </div>
   

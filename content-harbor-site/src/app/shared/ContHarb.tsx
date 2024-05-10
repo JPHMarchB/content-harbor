@@ -67,7 +67,7 @@ const ContHarb: React.FC = () => {
         <div className="bg-slate-800 p-6 rounded-md text-white">
           <div className="text-center my-6">
             <div className="flex justify-center items-center">
-              <img className="rounded-lg" src="/harbor-1.jpg" width={250} height={250} alt="logo"/>
+              <img className="rounded-lg" src="/favicon.ico" width={250} height={250} alt="logo"/>
             </div>
             <h1 className={gradientTextStyle + " text-3xl font-light"}>
               Content Harbor
