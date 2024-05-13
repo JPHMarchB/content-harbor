@@ -6,8 +6,7 @@ import Results from "./Results";
 
 const ContHarb: React.FC = () => {
   const CHARACTER_LIMIT: number = 24;
-  const ENDPOINT: string =
-    "https://ijglbxierk.execute-api.us-west-2.amazonaws.com/prod/post_idea";
+  const ENDPOINT: string ="https://ijglbxierk.execute-api.us-west-2.amazonaws.com/prod/post_idea";
   const [prompt, setPrompt] = React.useState("");
   const [snippet, setSnippet] = React.useState("");
   const [keywords, setKeywords] = React.useState([]);
