@@ -6,6 +6,20 @@ Content Harbor is a Software as a Service (SaaS) platform designed to empower us
 - Decision Support Tools: Utilize intuitive tools to formulate ideas.
 - Security and Privacy: Rest assured knowing that your data is handled with the utmost security and privacy measures in place.
 
+## Technologies Used
+### Frontend
+TailwindCSS
+React
+Typescript
+Next.js
+### Backend
+Python
+Amazon Web Services (AWS)
+### Containerization
+Docker
+### Version Control
+Git
+
 ## Getting Started
 To start using Content Harbor, simply sign up for an account on our website and follow the onboarding process. Once logged in, you'll have access to a range of features to help you make smarter decisions.
 
