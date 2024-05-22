@@ -8,17 +8,17 @@ Content Harbor is a Software as a Service (SaaS) platform designed to empower us
 
 ## Technologies Used
 ### Frontend
-TailwindCSS
-React
-Typescript
-Next.js
+- TailwindCSS
+- React
+- Typescript
+- Next.js
 ### Backend
-Python
-Amazon Web Services (AWS)
+- Python
+- Amazon Web Services (AWS)
 ### Containerization
-Docker
+- Docker
 ### Version Control
-Git
+- Git
 
 ## Getting Started
 To start using Content Harbor, simply sign up for an account on our website and follow the onboarding process. Once logged in, you'll have access to a range of features to help you make smarter decisions.
